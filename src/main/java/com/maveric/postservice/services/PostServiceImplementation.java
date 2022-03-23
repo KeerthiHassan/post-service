@@ -81,6 +81,28 @@ public class PostServiceImplementation implements PostService{
         postResponse.setUpdatedAt(posts.getUpdatedAt());
         return postResponse;
     }
+    @Override
+    public PostResponse updatePost(String postId, UpdatePost updatePost) {
+        Post post=postRepo.findBypostId(postId);
+        post.setUpdatedAt(LocalDate.now());
+        post.setPostedBy(updatePost.getPostedBy());
+        post.setPost(updatePost.getPost());
+        Post posts=postRepo.save(post);
+        Integer count=commentfeign.getCommentsCount(postId).getBody();
+        Integer counts=commentfeign.getCommentsCount(postId).getBody();
+        String s=posts.getPost();
+        String s1=posts.getPostedBy();
+        PostResponse postResponse=new PostResponse();
+        postResponse.setPostId(posts.getPostId());
+        postResponse.setPost(posts.getPost());
+        postResponse.setPostedBy(posts.getPostedBy());
+        postResponse.setLikesCount(count);
+        postResponse.setCommentsCount(counts);
+        postResponse.setCreatedAt(posts.getCreatedAt());
+        postResponse.setUpdatedAt(posts.getUpdatedAt());
+        return postResponse;
+
+    }
 
 
 
