@@ -31,6 +31,9 @@ public class PostController {
     public ResponseEntity<PostResponse> createPost(@RequestBody Post post){
         return new ResponseEntity<PostResponse>(postService.createPost(post), HttpStatus.CREATED);
     }
-
+    @PutMapping("/posts/{postId}")
+    public ResponseEntity<PostResponse> updatePost(@PathVariable ("postId") String postId,@RequestBody UpdatePost updatePost){
+        return new ResponseEntity<PostResponse>(postService.updatePost(postId,updatePost),HttpStatus.OK);
+    }
 
 }
