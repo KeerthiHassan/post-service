@@ -11,5 +11,5 @@ public interface PostService {
     PostResponse createPost(Post post);
     PostResponse updatePost(String postId,UpdatePost updatePost);
     PostResponse getPostDetails(String postId);
-
+    String deletePost(String postId);
 }

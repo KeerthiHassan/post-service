@@ -104,7 +104,11 @@ public class PostServiceImplementation implements PostService{
 
     }
 
-
+    @Override
+    public String deletePost(String postId) {
+        postRepo.deleteById(postId);
+        return "Post deleted successfully";
+    }
 
 
 }
