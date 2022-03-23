@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PostService {
     List<PostResponse> getPosts();
-
+    PostResponse createPost(Post post);
     PostResponse getPostDetails(String postId);
 
 }

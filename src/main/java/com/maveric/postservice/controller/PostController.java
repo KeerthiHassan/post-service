@@ -27,5 +27,10 @@ public class PostController {
         return new ResponseEntity<PostResponse> (postService.getPostDetails(postId), HttpStatus.OK);
     }
 
+    @PostMapping("/posts")
+    public ResponseEntity<PostResponse> createPost(@RequestBody Post post){
+        return new ResponseEntity<PostResponse>(postService.createPost(post), HttpStatus.CREATED);
+    }
+
 
 }

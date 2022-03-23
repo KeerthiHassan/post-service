@@ -7,7 +7,11 @@ import com.maveric.postservice.feign.LikeFeign;
 import com.maveric.postservice.model.Post;
 import com.maveric.postservice.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -62,5 +66,23 @@ public class PostServiceImplementation implements PostService{
         return postResponse;
     }
 
-    
+    @Override
+    public PostResponse createPost(Post post) {
+        post.setCreatedAt(LocalDate.now());
+        post.setUpdatedAt(LocalDate.now());
+        Post posts=postRepo.save(post);
+        PostResponse postResponse=new PostResponse();
+        postResponse.setPostId(posts.getPostId());
+        postResponse.setPost(posts.getPost());
+        postResponse.setPostedBy(posts.getPostedBy());
+        postResponse.setLikesCount(0);
+        postResponse.setCommentsCount(0);
+        postResponse.setCreatedAt(posts.getCreatedAt());
+        postResponse.setUpdatedAt(posts.getUpdatedAt());
+        return postResponse;
+    }
+
+
+
+
 }
