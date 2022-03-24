@@ -9,8 +9,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdatePost {
+public class Postdto {
     private String post;
     private String postedBy;
-    private LocalDate updatedAt;
 }
