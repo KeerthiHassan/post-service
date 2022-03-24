@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostResponse {
-    private String postId;
+      private String postId;
     private String post;
-    private String postedBy;
+    private UserResponse postedBy;
     private Integer likesCount;
     private Integer commentsCount;
     private LocalDate createdAt;
